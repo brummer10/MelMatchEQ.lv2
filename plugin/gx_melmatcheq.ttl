@@ -1,0 +1,620 @@
+#
+# Copyright (C) 2020 Hermann Meyer
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# --------------------------------------------------------------------------
+#
+
+
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lv2: <http://lv2plug.in/ns/lv2core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix guiext: <http://lv2plug.in/ns/extensions/ui#>.
+@prefix time: <http://lv2plug.in/ns/ext/time#>.
+@prefix units: <http://lv2plug.in/ns/extensions/units#> .
+
+<https://github.com/brummer10#me>
+	a foaf:Person ;
+	foaf:name "brummer" ;
+	rdfs:seeAlso <https://github.com/brummer10> .
+
+<https://github.com/brummer10/MelMatchEQ>
+	a doap:Project ;
+	doap:maintainer <https://github.com/brummer10#me> ;
+	doap:name "MelMatchEQ_" .
+
+<https://github.com/brummer10/MelMatchEQ#_melmatcheq_>
+    a lv2:Plugin ,
+        lv2:FilterPlugin ;
+    doap:maintainer <https://github.com/brummer10#me> ;
+    doap:name "MelMatchEQ";
+    doap:license <http://opensource.org/licenses/isc> ;
+    lv2:project <https://github.com/brummer10/MelMatchEQ> ;
+    lv2:optionalFeature lv2:hardRTCapable ;
+      
+    lv2:minorVersion 35;
+    lv2:microVersion 0;
+
+  guiext:ui <https://github.com/brummer10/MelMatchEQgui#_melmatcheq_>;
+    
+rdfs:comment """
+
+...
+
+""";
+
+    lv2:port  [
+        a lv2:AudioPort ,
+            lv2:OutputPort ;
+        lv2:index 0 ;
+        lv2:symbol "out" ;
+        lv2:name "Out"
+    ] , [
+        a lv2:AudioPort ,
+            lv2:InputPort ;
+        lv2:index 1 ;
+        lv2:symbol "in" ;
+        lv2:name "In" ;
+    ] , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 2 ;
+        lv2:symbol "BYPASS" ;
+        lv2:name "BYPASS" ;
+        lv2:default 1.0 ;
+        lv2:minimum 0.0 ;
+        lv2:maximum 1.0 ;
+        lv2:designation lv2:enabled;
+        lv2:portProperty lv2:toggled;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 3 ;
+        lv2:symbol "G1" ;
+        lv2:name ">" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 4 ;
+        lv2:symbol "G2" ;
+        lv2:name "102hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 5 ;
+        lv2:symbol "G3" ;
+        lv2:name "218hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 6 ;
+        lv2:symbol "G4" ;
+        lv2:name "351hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 7 ;
+        lv2:symbol "G5" ;
+        lv2:name "503hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 8 ;
+        lv2:symbol "G6" ;
+        lv2:name "678hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 9 ;
+        lv2:symbol "G7" ;
+        lv2:name "878hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 10 ;
+        lv2:symbol "G8" ;
+        lv2:name "1107hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 11 ;
+        lv2:symbol "G9" ;
+        lv2:name "1369hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 12 ;
+        lv2:symbol "G10" ;
+        lv2:name "1669hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 13 ;
+        lv2:symbol "G11" ;
+        lv2:name "2013hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 14 ;
+        lv2:symbol "G12" ;
+        lv2:name "2407hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]       , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 15 ;
+        lv2:symbol "G13" ;
+        lv2:name "2857hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 16 ;
+        lv2:symbol "G14" ;
+        lv2:name "3373hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 17 ;
+        lv2:symbol "G15" ;
+        lv2:name "3964hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 18 ;
+        lv2:symbol "G16" ;
+        lv2:name "4641hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 19 ;
+        lv2:symbol "G17" ;
+        lv2:name "5416hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 20 ;
+        lv2:symbol "G18" ;
+        lv2:name "6303hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 21 ;
+        lv2:symbol "G19" ;
+        lv2:name "7319hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 22 ;
+        lv2:symbol "G20" ;
+        lv2:name "8483hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 23 ;
+        lv2:symbol "G21" ;
+        lv2:name "9815hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 24 ;
+        lv2:symbol "G22" ;
+        lv2:name "10000hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 25 ;
+        lv2:symbol "G23" ;
+        lv2:name "13000hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 26 ;
+        lv2:symbol "G24" ;
+        lv2:name "15000hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 27 ;
+        lv2:symbol "G25" ;
+        lv2:name "17000hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 28 ;
+        lv2:symbol "G26" ;
+        lv2:name "20000hz" ;
+        lv2:default 0.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 10.0 ;
+    ]
+
+          , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 29 ;
+        lv2:symbol "V1" ;
+        lv2:name ">" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 30 ;
+        lv2:symbol "V2" ;
+        lv2:name "102hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 31 ;
+        lv2:symbol "V3" ;
+        lv2:name "218hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 32 ;
+        lv2:symbol "V4" ;
+        lv2:name "351hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 33 ;
+        lv2:symbol "V5" ;
+        lv2:name "503hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 34 ;
+        lv2:symbol "V6" ;
+        lv2:name "678hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 35 ;
+        lv2:symbol "V7" ;
+        lv2:name "878hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 36 ;
+        lv2:symbol "V8" ;
+        lv2:name "1107hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 37 ;
+        lv2:symbol "V9" ;
+        lv2:name "1369hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 38 ;
+        lv2:symbol "V10" ;
+        lv2:name "1669hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 39 ;
+        lv2:symbol "V11" ;
+        lv2:name "2013hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 40 ;
+        lv2:symbol "V12" ;
+        lv2:name "2407hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]       , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 41 ;
+        lv2:symbol "V13" ;
+        lv2:name "2857hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 42 ;
+        lv2:symbol "V14" ;
+        lv2:name "3373hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 43 ;
+        lv2:symbol "V15" ;
+        lv2:name "3964hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 44 ;
+        lv2:symbol "V16" ;
+        lv2:name "4641hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 45 ;
+        lv2:symbol "V17" ;
+        lv2:name "5416hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 46 ;
+        lv2:symbol "V18" ;
+        lv2:name "6303hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 47 ;
+        lv2:symbol "V19" ;
+        lv2:name "7319hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 48 ;
+        lv2:symbol "V20" ;
+        lv2:name "8483hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 49 ;
+        lv2:symbol "V21" ;
+        lv2:name "9815hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 50 ;
+        lv2:symbol "V22" ;
+        lv2:name "10000hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 51 ;
+        lv2:symbol "V23" ;
+        lv2:name "13000hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 52 ;
+        lv2:symbol "V24" ;
+        lv2:name "15000hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 53 ;
+        lv2:symbol "V25" ;
+        lv2:name "17000hz" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]      , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 54 ;
+        lv2:symbol "V26" ;
+        lv2:name "<" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 5.2 ;
+    ]
+
+          , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 55 ;
+        lv2:symbol "MATCH1" ;
+        lv2:name "MATCH1" ;
+        lv2:default 0.0 ;
+        lv2:minimum 0.0 ;
+        lv2:maximum 1.0 ;
+        lv2:portProperty lv2:toggled;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 56 ;
+        lv2:symbol "MATCH2" ;
+        lv2:name "MATCH2" ;
+        lv2:default 0.0 ;
+        lv2:minimum 0.0 ;
+        lv2:maximum 1.0 ;
+        lv2:portProperty lv2:toggled;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 57 ;
+        lv2:symbol "GAIN" ;
+        lv2:name "GAIN" ;
+        lv2:default 0.0 ;
+        lv2:minimum -40.0 ;
+        lv2:maximum 40.0 ;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 58 ;
+        lv2:symbol "CLEAR" ;
+        lv2:name "CLEAR" ;
+        lv2:default 0.0 ;
+        lv2:minimum 0.0 ;
+        lv2:maximum 1.0 ;
+        lv2:portProperty lv2:toggled;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 59 ;
+        lv2:symbol "PROFILE" ;
+        lv2:name "PROFILE" ;
+        lv2:default 0.0 ;
+        lv2:minimum 0.0 ;
+        lv2:maximum 1.0 ;
+        lv2:portProperty lv2:toggled;
+    ]      , [
+        a lv2:InputPort ,
+            lv2:ControlPort ;
+        lv2:index 60 ;
+        lv2:symbol "MORPH" ;
+        lv2:name "MORPH" ;
+        lv2:default 1.0 ;
+        lv2:minimum 0.0 ;
+        lv2:maximum 1.0 ;
+    ] .
+
+<https://github.com/brummer10/MelMatchEQgui#_melmatcheq_>
+  a guiext:X11UI;
+  guiext:binary <gx_melmatcheq_ui.so>;
+        lv2:extensionData guiext::idle ; 
+        lv2:requiredFeature guiext:makeResident;
+  .
