@@ -615,6 +615,7 @@ rdfs:comment """
 <https://github.com/brummer10/MelMatchEQgui#_melmatcheq_>
   a guiext:X11UI;
   guiext:binary <gx_melmatcheq_ui.so>;
-        lv2:extensionData guiext::idle ; 
-        lv2:requiredFeature guiext:makeResident;
+        lv2:extensionData guiext::idle , guiext:idleInterface , guiext:resize ;
+        lv2:optionalFeature guiext:resize ;
+        lv2:requiredFeature guiext:idleInterface , guiext:makeResident;
   .
